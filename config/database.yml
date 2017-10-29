@@ -1,0 +1,26 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  host: localhost
+  user: postgres
+  password: badrabbit
+  port: 5432
+  database: yard_development
+
+test:
+  <<: *default
+  host: localhost
+  user: postgres
+  password: badrabbit
+  port: 5432
+  database: yard_test
+
+production:
+  <<: *default
+  database: yard_production
+  username: yard
+  password: <%= ENV['BRICKYARD_DATABASE_PASSWORD'] %>
