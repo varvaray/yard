@@ -5,5 +5,9 @@ Rails.application.routes.draw do
     resources :vehicles, only: %i(index show update) do
 
     end
+
+    resources :transitions, only: %i(index show update create new destroy) do
+
+    end
   end
 end

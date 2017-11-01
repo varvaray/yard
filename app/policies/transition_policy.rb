@@ -1,19 +1,19 @@
-class VehiclePolicy < ApplicationPolicy
+class TransitionPolicy < ApplicationPolicy
 
   def index?
     true if user.present?
   end
 
   def create?
-    false
+    true if user.admin?
   end
 
   def update?
-    true if user.present?
+    true if user.admin?
   end
 
   def destroy?
-    false
+    true if user.admin?
   end
 
 end

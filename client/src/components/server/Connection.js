@@ -11,22 +11,6 @@ function signUp(email, password, cb) {
   console.log('in a Client');
   console.log(email);
   console.log(password);
-  // jQuery.post("/api/v1/auth/sign_in", {
-  //   email   : 'xxx',
-  //   password: 'xxx'
-  // }, function(response, textStatus, xhr){
-  //   sessionStorage.setItem("uid", xhr.getResponseHeader("uid"));
-  //   sessionStorage.setItem("client", xhr.getResponseHeader("client"));
-  //   sessionStorage.setItem("access-token", xhr.getResponseHeader("access-token"));
-  //
-  //   jQuery.post("/api/v1/projects", {
-  //     "uid"         : sessionStorage.getItem("uid"),
-  //     "access-token": sessionStorage.getItem("access-token"),
-  //     "client"      : sessionStorage.getItem("client")
-  //   },function(response, textStatus, xhr) {
-  //     debugger
-  //   });
-  // });
   var headers = new Headers();
   headers.append("content-type", "application/json");
   var initRequest = {

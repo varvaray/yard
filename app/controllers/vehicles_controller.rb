@@ -15,10 +15,14 @@ class VehiclesController < ApplicationController
   end
 
   def update
-
+    @vehicle.update vehicle_params
   end
 
   private
+
+  def vehicle_params
+    params.permit(:id, :state, :name)
+  end
 
   def set_vehicle
     @vehicle = Vehicle.find(params[:id])

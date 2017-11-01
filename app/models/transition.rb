@@ -1,0 +1,3 @@
+class Transition < ApplicationRecord
+
+end

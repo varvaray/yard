@@ -1,0 +1,362 @@
+{
+	"info": {
+		"name": "brickyard",
+		"_postman_id": "c8a61993-5ab9-b06b-fadb-84bf7bfce12d",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "brickyard_api",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE: Sign In",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"varvara.ratnikova@gmail.com\", \"password\": \"testmyapp\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3001/auth/sign_in",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"auth",
+						"sign_in"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE: New transition",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"valentino@valentinog.com\", \"password\": \"changeme\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "INDEX: List all vehicles",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "pCS8yOKThYDGPvU7JCsY5w"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "uid",
+						"value": "varvara.ratnikova@gmail.com"
+					},
+					{
+						"key": "expiry",
+						"value": "1510779304"
+					},
+					{
+						"key": "client",
+						"value": "OYIZ3gELuA9PjGbh__Cpmw"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3001/api/vehicles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"vehicles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "INDEX: List all transitions",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "pCS8yOKThYDGPvU7JCsY5w"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "uid",
+						"value": "varvara.ratnikova@gmail.com"
+					},
+					{
+						"key": "expiry",
+						"value": "1510779304"
+					},
+					{
+						"key": "client",
+						"value": "OYIZ3gELuA9PjGbh__Cpmw"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3001/api/vehicles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"vehicles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE: Update transition 1",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "pCS8yOKThYDGPvU7JCsY5w"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "uid",
+						"value": "varvara.ratnikova@gmail.com"
+					},
+					{
+						"key": "expiry",
+						"value": "1510779304"
+					},
+					{
+						"key": "client",
+						"value": "OYIZ3gELuA9PjGbh__Cpmw"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3001/api/transitions/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"transitions",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "INDEX: Show vehicle 1",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "MgS_uLG8yHSBvVrmkkoG9Q"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "uid",
+						"value": "varvara.ratnikova@gmail.com"
+					},
+					{
+						"key": "expiry",
+						"value": "1510778520"
+					},
+					{
+						"key": "client",
+						"value": "PXVSnTLHptYGVyS4wop8nw"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3001/api/vehicles/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"vehicles",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "INDEX: Show transition 1",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "EjuzCiojc4Gqa0dvpDtwcA"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "uid",
+						"value": "varvara.ratnikova@gmail.com"
+					},
+					{
+						"key": "expiry",
+						"value": "1510779690"
+					},
+					{
+						"key": "client",
+						"value": "EAumLK25PGdmUmmsZPit8Q"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3001/api/transitions/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"transitions",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DESTROY: Sign Out",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "SznLDIVKQfIlwM1KHUZJ9Q"
+					},
+					{
+						"key": "client",
+						"value": "g8JSCObdq7iObJDJyvMZbg"
+					},
+					{
+						"key": "expiry",
+						"value": "1504270219"
+					},
+					{
+						"key": "uid",
+						"value": "valentino@valentinog.com"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth/sign_out",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"sign_out"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE: New user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"valentino@valentinog.com\", \"password\": \"changeme\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

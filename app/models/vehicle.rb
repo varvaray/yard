@@ -9,25 +9,26 @@ class Vehicle < ApplicationRecord
 
   # Replace this with an external source (like a db)
   def transitions
-    [
-        {parked: :idling, on: :ignite},
-        {idling: :first_gear, first_gear: :second_gear, on: :shift_up}
-    # ...
-    ]
+    transitions_data = []
+    Transition.all.each do |transition|
+      transitions_data << { transition.from.to_sym => transition.to.to_sym, :on => transition.on.to_sym }
+    end
+    transitions_data
   end
 
   # Create a state machine for this vehicle instance dynamically based on the
   # transitions defined from the source above
   def machine
     vehicle = self
-    @machine ||= Machine.new(vehicle, initial: :parked, action: :save) do
+    @machine ||= Machine.new(vehicle, initial: :designed, action: :save) do
       vehicle.transitions.each {|attrs| transition(attrs)}
     end
   end
 
   def save
-    # Save the state change...
-    true
+    ap 'save state'
+    ap state
+    self.write_attribute(:state, state)
   end
 end
 

@@ -10,3 +10,7 @@ Vehicle.create(state: 1, name: 'opel')
 
 User.create(email: 'varvara.ratnikova@gmail.com', role: 1, password: 'testmyapp', provider: 'email')
 User.create(email: 'test.account@gmail.com', role: 0, password: 'testmyapp2', uid: 'regular')
+
+Transition.create(from: :designed, to: :assembled, on: :click)
+Transition.create(from: :assembled, to: :painted, on: :click)
+Transition.create(from: :painted, to: :tested, on: :click)
