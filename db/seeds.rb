@@ -5,12 +5,22 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Vehicle.create(state: 0, name: 'subaru')
-Vehicle.create(state: 1, name: 'opel')
 
 User.create(email: 'varvara.ratnikova@gmail.com', role: 1, password: 'testmyapp', provider: 'email')
 User.create(email: 'test.account@gmail.com', role: 0, password: 'testmyapp2', uid: 'regular')
 
-Transition.create(from: :designed, to: :assembled, on: :click)
-Transition.create(from: :assembled, to: :painted, on: :click)
-Transition.create(from: :painted, to: :tested, on: :click)
+# Transition.create(from: :designed, to: :assembled)
+# Transition.create(from: :assembled, to: :painted)
+# Transition.create(from: :painted, to: :tested)
+# Transition.create(from: :tested, to: :designed)
+
+VehicleState.find_or_create_by(name: :designed, order: 1)
+VehicleState.find_or_create_by(name: :assembled, order: 2)
+VehicleState.find_or_create_by(name: :painted, order: 3)
+VehicleState.find_or_create_by(name: :tested, order: 4)
+
+test = Vehicle.find_or_create_by!(vehicle_state_id: 1, name: 'subaru')
+ap 'create vehicle'
+# ap test
+# test.save!
+Vehicle.find_or_create_by!(vehicle_state_id: 2, name: 'opel')

@@ -1,38 +1,45 @@
 class Vehicle < ApplicationRecord
   attr_accessor :state
+  has_one :vehicle_state, foreign_key: :id
 
-  # Make sure the machine gets initialized so the initial state gets set properly
   def initialize(*)
     super
     machine
   end
 
-  # Replace this with an external source (like a db)
   def transitions
+    # ap 'transitions'
     transitions_data = []
-    Transition.all.each do |transition|
-      transitions_data << { transition.from.to_sym => transition.to.to_sym, :on => transition.on.to_sym }
+    states = VehicleState.all.order(order: :asc)
+    from = states.first.order
+    states.each do |state|
+      next if state.order == from
+      to = state.order
+      transitions_data << { from => to, on: :request }
+      from = state.order
     end
+    transitions_data << { from => states.first.order, on: :request }
+    # ap 'transitions data = '
+    # ap transitions_data
     transitions_data
   end
 
-  # Create a state machine for this vehicle instance dynamically based on the
-  # transitions defined from the source above
   def machine
     vehicle = self
-    @machine ||= Machine.new(vehicle, initial: :designed, action: :save) do
+    @machine ||= Machine.new(vehicle, initial: 1, action: :save) do
       vehicle.transitions.each {|attrs| transition(attrs)}
     end
   end
 
   def save
-    ap 'save state'
-    ap state
-    self.write_attribute(:state, state)
+    # ap 'save state'
+    # ap vehicle_state_id
+    # ap state
+    self.write_attribute(:vehicle_state_id, state)
   end
 end
 
-# Generic class for building machines
+
 class Machine
   def self.new(object, *args, &block)
     machine_class = Class.new
@@ -40,7 +47,6 @@ class Machine
     attribute = machine.attribute
     action = machine.action
 
-    # Delegate attributes
     machine_class.class_eval do
       define_method(:definition) { machine }
       define_method(attribute) { object.send(attribute) }

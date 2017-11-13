@@ -1,12 +1,13 @@
 class VehiclesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_vehicle, only: %i(show update)
+  before_action :set_vehicle, only: %i(show tick)
 
   def index
+    authorize Vehicle
+    @vehicles = policy_scope Vehicle.all
     render json: {
-      message: "Welcome #{current_user.email}",
       user: current_user,
-      vehicles: Vehicle.all
+      vehicles: @vehicles
     }
   end
 
@@ -14,15 +15,12 @@ class VehiclesController < ApplicationController
     render json: { vehicle: @vehicle }
   end
 
-  def update
-    @vehicle.update vehicle_params
+  def tick
+    @vehicle.machine.request
+    render json: { vehicle: @vehicle }
   end
 
   private
-
-  def vehicle_params
-    params.permit(:id, :state, :name)
-  end
 
   def set_vehicle
     @vehicle = Vehicle.find(params[:id])

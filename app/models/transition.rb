@@ -1,3 +1,0 @@
-class Transition < ApplicationRecord
-
-end

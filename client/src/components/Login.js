@@ -29,14 +29,15 @@ export default class Login extends Component {
     console.log(this.state.email);
     console.log(this.state.password);
     event.preventDefault();
-    Client.signUp(this.state.email, this.state.password, (user) => {
-      console.log('user');
+    Client.signIn(this.state.email, this.state.password, (user) => {
+      console.log('user signed in success');
       console.log(user);
       if (user['errors']) {
-
+        console.log('errors logged in');
+        console.log(user['errors']);
       }
-      else if (user['data']) {
-
+      else if (user['ok']) {
+        console.log('logged in');
       }
     });
   }

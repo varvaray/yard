@@ -2,12 +2,9 @@ class ApplicationPolicy
   attr_reader :user, :record
 
   def initialize(user, record)
-    ap 'initialize in application policy'
     raise Pundit::NotAuthorizedError unless user
     @user = user
     @record = record
-    ap 'record = '
-    ap record
   end
 
   def index?
@@ -15,11 +12,7 @@ class ApplicationPolicy
   end
 
   def show?
-    ap 'show in application policy'
-    ap 'record = '
-    ap record
-    ap scope
-    scope.where(:id => record.id).exists?
+    scope.where(id: record.id).exists?
   end
 
   def create?

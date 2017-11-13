@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Login from './components/Login';
-// import Authorization from './components/Authorization';
 
 class App extends Component {
   state = {

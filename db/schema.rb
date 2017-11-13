@@ -10,18 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171030205641) do
+ActiveRecord::Schema.define(version: 20171112180935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "transitions", force: :cascade do |t|
-    t.string "from", null: false
-    t.string "to", null: false
-    t.string "on", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "users", force: :cascade do |t|
     t.integer "role", default: 0, null: false
@@ -53,9 +45,16 @@ ActiveRecord::Schema.define(version: 20171030205641) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  create_table "vehicle_states", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "order", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "vehicles", force: :cascade do |t|
-    t.string "state"
-    t.string "name"
+    t.string "name", null: false
+    t.integer "vehicle_state_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
