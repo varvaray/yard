@@ -1,24 +1,23 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
+* Rails 5, Rspec
 
 * Database initialization
 
-* How to run the test suite
+All standard - 
 
-* Services (job queues, cache servers, search engines, etc.)
+rake db:create
+rake db:migrate
+rake db:seed
+
+* To run the test suite
+
+in command line:
+
+bundle exec rails spec 
+
+
 
 * Deployment instructions
 
-* ...
+rake start
